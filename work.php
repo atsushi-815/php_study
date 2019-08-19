@@ -3,7 +3,7 @@
 class Employee
 {
     public $name;
-    public $state = "働いている";
+    private $state = "働いている";
 
 
     public function work()
