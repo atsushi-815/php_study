@@ -76,3 +76,6 @@ var_dump($obj->foo);
 
 var_dump(isset($obj->foo));
 var_dump(empty($obj->foo));
+
+$obj->bar('baz');
+SomeClass::staticBar('baz');
