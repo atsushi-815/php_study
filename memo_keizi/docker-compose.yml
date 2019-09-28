@@ -1,5 +1,5 @@
 ### nginxでphpをブラウザ上に表記するのに必要なコンテナ一式。
-version: '1'
+version: '3'
 services:
   app:
     image: laradock/php-fpm:2.2-7.2
