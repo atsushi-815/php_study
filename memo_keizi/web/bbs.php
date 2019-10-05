@@ -1,10 +1,10 @@
 <?php
 
 // データベースに接続
-$link = mysql_connect('localhost', 'root', '');
+$link = mysql_connect('localhost', 'app', 'root');
 if(!$link)
 {
-    die('データベースに接続できません:' .mysql_error());
+    die('データベースに接続できません:' . mysql_error());
 }
 
 // データベースを選択する
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         }
         else
         {
-            $name = $_POST['hame'];
+            $name = $_POST['name'];
         }
 
     // 一言が正しく入力されているかチェック
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     if(count($errors) === 0)
     {
         // 保存するためのSQL文を作成
-        $sql = "INSERT INTO `post` (`name, `comment`, `created_at`)VALUES('"
+        $sql = "INSERT INTO `post` (`name`, `comment`, `created_at`)VALUES('"
             . mysql_real_escape_string($name) . "','"
             . mysql_real_escape_string($comment) . "','"
             . date('Y-m-d H:i:s') . "')";
