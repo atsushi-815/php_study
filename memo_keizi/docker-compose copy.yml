@@ -14,12 +14,13 @@ services:
       - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/phpapp/
 
-#  mysql:
-#    image: mysql:5.7
-#    ports:
-#      - 33306:3306
-#    volumes:
-#      - ./testdata/:/data
-#    environment:
-#        MYSQL_DATABASE: app
-#        MYSQL_ROOT_PASSWORD: root
+  ### host:127.0.0.1 user:root
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 33306:3306
+    volumes:
+      - ./testdata/:/data
+    environment:
+        MYSQL_DATABASE: app
+        MYSQL_ROOT_PASSWORD: root

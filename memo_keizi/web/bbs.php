@@ -1,7 +1,7 @@
 <?php
 
 // データベースに接続
-$link = mysql_connect('localhost', 'app', 'root');
+$link = mysqli_connect();
 if(!$link)
 {
     die('データベースに接続できません:' . mysql_error());
