@@ -70,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <h1>一言掲示板</h1>
 
         <form action="bbs.php" method="post">
+            <?php if (count($errors)): ?>
+            <ul class="error_list">
             名前： <input type="text" name="name" /><br />
             一言： <input type="text" name="comment" size="60" /><br />
             <input type="submit" name="submit" value="送信" />
