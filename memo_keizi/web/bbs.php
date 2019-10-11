@@ -1,7 +1,7 @@
 <?php
 
 // データベースに接続
-$link = mysqli_connect();
+$link = mysqli_connect('localhost', 'root', '');
 if(!$link)
 {
     die('データベースに接続できません:' . mysql_error());
@@ -56,6 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     
         // 保存する
         mysql_query($sql, $link);
+
+        mysql_close($link);
+        header('Location: http://' .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     }
 }
 
@@ -70,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <h1>一言掲示板</h1>
 
         <form action="bbs.php" method="post">
-            <?php if (count($errors)): ?>
+            <?php if (count($errors) > 0): ?>
             <ul class="error_list">
                 <?php foreach ($errors as $error): ?>
                 <li>
@@ -79,9 +82,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 <?php endforeach; ?>
             </ul>
             <?php endif; ?>
+
             名前： <input type="text" name="name" /><br />
             一言： <input type="text" name="comment" size="60" /><br />
             <input type="submit" name="submit" value="送信" />
         </form>
+
+        <?php
+        //投稿された内容を取得するSQLを作成して結果を取得
+        $sql
     </body>
 </html>
