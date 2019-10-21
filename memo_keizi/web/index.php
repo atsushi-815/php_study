@@ -14,7 +14,9 @@ if (  isset($_POST["send"] ) ===  true ) {
 
     if ( $comment  === "" )  $err_msg2 = "コメントを入力してください";
 
+    //上の条件クリアの時のみdata.txtに書き込み
     if( $err_msg1 === "" && $err_msg2 ==="" ){
+        //modeのa指定でファイルに追記。無ければ作成を意味する。
         $fp = fopen( "data.txt" ,"a" );
         fwrite( $fp ,  $name."\t".$comment."\n");
         $message ="書き込みに成功しました。";
