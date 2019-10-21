@@ -23,7 +23,7 @@ if (  isset($_POST["send"] ) ===  true ) {
     }
 
 }
-
+//rモードで読み込み専用で開く。
 $fp = fopen("data.txt","r");
 
 $dataArr= array();
