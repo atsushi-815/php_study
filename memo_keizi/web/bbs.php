@@ -1,7 +1,7 @@
 <?php
 
 // データベースに接続
-$link = mysqli_connect('localhost', 'root', '');
+$link = mysql_connect('localhost', 'root', '');
 if(!$link)
 {
     die('データベースに接続できません:' . mysql_error());
@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             . mysql_real_escape_string($name) . "','"
             . mysql_real_escape_string($comment) . "','"
             . date('Y-m-d H:i:s') . "')";
-    
         // 保存する
         mysql_query($sql, $link);
 
