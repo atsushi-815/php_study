@@ -4,11 +4,11 @@
 $link = mysqli_connect('localhost', 'root', 'root', 'app');
 if(!$link)
 {
-    die('データベースに接続できません:' . mysql_error());
+    die('データベースに接続できません:' . mysqli_error($link));
 }
 
 // データベースを選択する
-mysql_select_db('app', $link);
+mysqli_select_db('app', $link);
 
 $errors = array();
 
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
         <?php if ($result !== false && mysql_num_rows($result)): ?>
         <ul>
-            <?php while ($post = nysql_fetch_assoc($result)): ?>
+            <?php while ($post = mysql_fetch_assoc($result)): ?>
             <li>
                 <?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?>:
                 <?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8'); ?>
