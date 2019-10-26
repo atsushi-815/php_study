@@ -2,7 +2,7 @@
 
 // データベースに接続
 $link = mysqli_connect('localhost', 'root', 'root', 'app');
-if(!$link)
+if (!$link)
 {
     die('データベースに接続できません:' . mysqli_error($link));
 }
@@ -54,15 +54,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             . mysql_real_escape_string($comment) . "','"
             . date('Y-m-d H:i:s') . "')";
         // 保存する
-        mysql_query($sql, $link);
+        mysqli_query($sql, $link);
 
-        mysql_close($link);
+        mysqli_close($link);
         header('Location: http://' .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     }
 }
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1-transitional.dtd">
 <html>
     <head>
         <title>一言掲示板</title>
@@ -75,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             <ul class="error_list">
                 <?php foreach ($errors as $error): ?>
                 <li>
-                    <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
+                    <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
                 </li>
                 <?php endforeach; ?>
             </ul>
@@ -89,12 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <?php
         //投稿された内容を取得するSQLを作成して結果を取得
         $sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
-        $result = mysql_query($sql, $link);
+        $result = mysqli_query($sql, $link);
         ?>
 
-        <?php if ($result !== false && mysql_num_rows($result)): ?>
+        <?php if ($result !== false && mysqli_num_rows($result)): ?>
         <ul>
-            <?php while ($post = mysql_fetch_assoc($result)): ?>
+            <?php while ($post = mysqli_fetch_assoc($result)): ?>
             <li>
                 <?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?>:
                 <?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8'); ?>
@@ -106,8 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
         <?php
         // 取得結果を解放して接続を閉じる
-        mysql_free_result($result);
-        mysql_close($link);
+        mysqli_free_result($result);
+        mysqli_close($link);
         ?>
     </body>
 </html>
