@@ -1,14 +1,14 @@
 <?php
 
 // データベースに接続
-$link = mysqli_connect('127.0.0.1', 'root', 'root', 'app', '33306');
+$link = mysqli_connect("host.docker.internal", "root", "root", "app", "33306");
 if (!$link)
 {
     die('データベースに接続できません:' . mysqli_error($link));
 }
 
 // データベースを選択する
-mysqli_select_db('app', $link);
+mysqli_select_db($link, 'app');
 
 $errors = array();
 
