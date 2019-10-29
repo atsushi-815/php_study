@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <?php
         //投稿された内容を取得するSQLを作成して結果を取得
         $sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
-        $result = mysqli_query($sql, $link);
+        $result = mysqli_query($link, $sql);
         ?>
 
         <?php if ($result !== false && mysqli_num_rows($result)): ?>
