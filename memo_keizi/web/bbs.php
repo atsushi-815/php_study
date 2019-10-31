@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     {
         // 保存するためのSQL文を作成
         $sql = "INSERT INTO `post` (`name`, `comment`, `created_at`)VALUES('"
-            . mysql_real_escape_string($name) . "','"
-            . mysql_real_escape_string($comment) . "','"
+            . mysqli_real_escape_string($link, $name) . "','"
+            . mysqli_real_escape_string($link, $comment) . "','"
             . date('Y-m-d H:i:s') . "')";
         // 保存する
         mysqli_query($sql, $link);
